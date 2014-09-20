@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[α]]></title>
+  <link href="http://ezotrank.github.io/atom.xml" rel="self"/>
+  <link href="http://ezotrank.github.io/"/>
+  <updated>2014-09-21T00:45:35+07:00</updated>
+  <id>http://ezotrank.github.io/</id>
+  <author>
+    <name><![CDATA[Maxim Kremenev]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[My Emacs Tips for Develop #1]]></title>
+    <link href="http://ezotrank.github.io/blog/2011/12/09/open-emacs-in-developer-dir/"/>
+    <updated>2011-12-09T04:45:00+07:00</updated>
+    <id>http://ezotrank.github.io/blog/2011/12/09/open-emacs-in-developer-dir</id>
+    <content type="html"><![CDATA[<h3>Open Emacs script</h3>
+
+<p>This script can quickly open emacs in the required directory with quick alias</p>
+
+<div><script src='https://gist.github.com/1449867.js'></script>
+<noscript><pre><code>#!/bin/bash
+
+DEV_DIR=$HOME/develop
+PROJECT_DIR=$DEV_DIR/.project_dir
+
+function add(){
+    pwd=`pwd`
+    name=$(basename $pwd)
+    if [[ $(grep &quot;^$name &quot; $PROJECT_DIR) ]]; then
+    echo &quot;This dir `pwd` already exists, but I can raplace path&quot;
+    sed -i.bak &quot;/^$name .*/d&quot; $PROJECT_DIR
+    fi
+    echo -e &quot;\n$name $pwd&quot; &gt;&gt; $PROJECT_DIR
+    sed -i.bak &quot;/^$/d&quot; $PROJECT_DIR
+}
+
+function get_path(){
+    path=$(grep &quot;^$1 &quot; $PROJECT_DIR|awk &#39;{print $2}&#39;)
+    if [ $path ]; then
+    echo $path
+    else
+    echo $HOME
+    fi
+}
+
+case &quot;$1&quot; in
+    &quot;add&quot;)
+    add
+    ;;
+    &quot;show&quot;)
+    cat $PROJECT_DIR
+    ;;
+    *)
+    emacs --title EmacsDev --chdir `get_path $1` &amp;&gt;/dev/null &amp;
+    ;;
+esac
+</code></pre></noscript></div>
+
+
+<h3>Open developer console</h3>
+
+<p>Yes, Emacs has a great console - eshell, but I like external terminal and like screen(many tabs is awesome).
+I use rxvt-unicode console and for each X session I start urxt daemon (urxvtd) and all my next terms open with urxvtc.
+Option &lsquo;name&rsquo; is only for my Awesome wm</p>
+
+<div><script src='https://gist.github.com/1449888.js'></script>
+<noscript><pre><code>(defun open-developer-screen ()
+  &quot;Open the developer screen&quot;
+  (interactive nil)
+  (shell-command &quot;urxvtc -name EmacsDevScreen +sb -e screen -S dev&quot;)
+  )</code></pre></noscript></div>
+
+
+<p>Now in Emacs just do <strong>M-x</strong> and paste <strong>open-developer-screen</strong></p>
+
+<h3>Don&rsquo;t use the arrow keys</h3>
+
+<p>Paste this key bindings in your Emacs config file.</p>
+
+<div><script src='https://gist.github.com/1449923.js'></script>
+<noscript><pre><code>;; real Emacs hackers don&#39;t use the arrow keys
+(global-set-key (kbd &quot;&lt;up&gt;&quot;) (lambda ()
+                               (interactive)
+                               (message &quot;Arrow key navigation is disabled. Use C-p instead.&quot;)))
+(global-set-key (kbd &quot;&lt;down&gt;&quot;) (lambda ()
+                                 (interactive)
+                                 (message &quot;Arrow key navigation is disabled. Use C-n instead.&quot;)))
+(global-set-key (kbd &quot;&lt;left&gt;&quot;) (lambda ()
+                                 (interactive)
+                                 (message &quot;Arrow key navigation is disabled. Use C-b instead.&quot;)))
+(global-set-key (kbd &quot;&lt;right&gt;&quot;) (lambda ()
+                                  (interactive)
+                                  (message &quot;Arrow key navigation is disabled. Use C-f instead.&quot;)))</code></pre></noscript></div>
+
+
+<h4>Links:</h4>
+
+<p><a href="https://github.com/ezotrank/my_emacs">My Emacs config</a></p>
+]]></content>
+  </entry>
+  
+</feed>
