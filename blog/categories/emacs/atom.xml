@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Emacs | α]]></title>
-  <link href="http://ezotrank.github.io/blog/categories/emacs/atom.xml" rel="self"/>
-  <link href="http://ezotrank.github.io/"/>
-  <updated>2014-09-21T00:45:35+07:00</updated>
-  <id>http://ezotrank.github.io/</id>
+  <link href="http://kremenev.com/blog/categories/emacs/atom.xml" rel="self"/>
+  <link href="http://kremenev.com/"/>
+  <updated>2014-09-21T10:21:53+07:00</updated>
+  <id>http://kremenev.com/</id>
   <author>
     <name><![CDATA[Maxim Kremenev]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[My Emacs Tips for Develop #1]]></title>
-    <link href="http://ezotrank.github.io/blog/2011/12/09/open-emacs-in-developer-dir/"/>
+    <link href="http://kremenev.com/blog/2011/12/09/open-emacs-in-developer-dir/"/>
     <updated>2011-12-09T04:45:00+07:00</updated>
-    <id>http://ezotrank.github.io/blog/2011/12/09/open-emacs-in-developer-dir</id>
+    <id>http://kremenev.com/blog/2011/12/09/open-emacs-in-developer-dir</id>
     <content type="html"><![CDATA[<h3>Open Emacs script</h3>
 
 <p>This script can quickly open emacs in the required directory with quick alias</p>

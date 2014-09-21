@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://ezotrank.github.io/sitemap.xml 
+Sitemap: http://kremenev.com/sitemap.xml 
